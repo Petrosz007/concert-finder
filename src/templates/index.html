@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Koncert & Mozi</title>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <h1>Koncertek es Mozi filmek</h1>
+
+      <form
+      method="get"
+      hx-get="/events"
+      hx-target="#events"
+      hx-swap="outerHTML"
+      placeholder="Toltes..."
+      >
+      <label for="from_date">Mettol</label>
+      <input type="date" name="from_date" id="from_date" />
+
+      <label for="from_date">Meddig</label>
+      <input type="date" name="to_date" id="to_date" />
+
+      <select name="types" id="types" multiple="true">
+        <option value="everything">Mindegyik</option>
+        {% for type in types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="addresses" id="addresses" multiple="true">
+        <option value="everything">Mindegyik</option>
+        {% for address in addresses %}
+        <option value="{{ address }}">{{ address }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="reset">Reset</button>
+      <button type="submit">Kereses</button>
+    </form>
+
+    {% include "fragments/events.html" %}
+
+    </main>
+
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </body>
+</html>

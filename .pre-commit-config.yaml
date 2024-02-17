@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: 24.2.0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+  # The default mypy pre-commit-hook didn't pick up all the rules and options, so we run it manually here
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        language: system
+        types: [python]
+        pass_filenames: false
+        entry: poetry run mypy .
+        require_serial: true

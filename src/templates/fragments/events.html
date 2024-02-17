@@ -1,0 +1,20 @@
+<table id="events">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Tipus</th>
+      <th>Cim</th>
+      <th>Helyszin</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for event in events %}
+    <tr>
+      <td>{{ event.start_datetime.strftime("%Y.%m.%d %H:%M") }}</td>
+      <td>{{ event.type }}</td>
+      <td><a href="{{ event.url }}">{{ event.name if event.name else event.url }}</a></td>
+      <td>{{ event.address }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

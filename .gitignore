@@ -1,0 +1,8 @@
+__pycache__/
+/.ruff_cache/
+/.mypy_cache/
+
+!/.vscode/extensions.json
+!/.vscode/settings.json
+
+/test.db
